@@ -1,9 +1,15 @@
 package com.example.wordquest.presentation.controller;
 
-import com.example.wordquest.application.dto.PlayerDTO;
-import com.example.wordquest.domain.model.Player;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.example.wordquest.application.dto.player.PlayerCreateDTO;
+import com.example.wordquest.application.dto.player.PlayerReadDTO;
+import com.example.wordquest.application.dto.player.PlayerUpdateDTO;
+import org.springframework.http.ResponseEntity;
 
-public interface PlayerController extends BaseController<Player, Long> {
-    PlayerDTO getPlayerDTO(@PathVariable Long id);
+
+
+public interface PlayerController extends BaseController<PlayerReadDTO, PlayerCreateDTO, PlayerUpdateDTO> {
+
+    ResponseEntity<PlayerReadDTO> findByUsername(String username);
+
+    ResponseEntity<PlayerReadDTO> findByEmailEmailAddress(String email);
 }

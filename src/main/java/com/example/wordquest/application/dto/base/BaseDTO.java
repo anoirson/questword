@@ -1,4 +1,4 @@
-package com.example.wordquest.application.dto;
+package com.example.wordquest.application.dto.base;
 
 import java.io.Serializable;
 

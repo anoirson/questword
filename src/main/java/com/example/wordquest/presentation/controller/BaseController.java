@@ -1,20 +1,20 @@
 package com.example.wordquest.presentation.controller;
 
 import java.util.List;
-import java.util.Optional;
-import org.springframework.web.bind.annotation.*;
+import java.util.UUID;
+import org.springframework.http.ResponseEntity;
 
-public interface BaseController<T, ID> {
+
+
+public interface BaseController<R, C, U> {
     
-    @GetMapping("/{id}")
-    Optional<T> getById(@PathVariable ID id);
+    ResponseEntity<R> create(C createDto);
 
-    @GetMapping
-    List<T> getAll();
+    ResponseEntity<R> getById(UUID id);
 
-    @PostMapping
-    T create(@RequestBody T entity);
+    ResponseEntity<List<R>> getAll();
 
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable ID id);
+    ResponseEntity<R> update(UUID id, U updateDto);
+
+    ResponseEntity<Void> delete(UUID id);
 }
