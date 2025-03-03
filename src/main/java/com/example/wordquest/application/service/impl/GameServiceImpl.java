@@ -7,6 +7,9 @@ import com.example.wordquest.application.service.GameService;
 import com.example.wordquest.domain.model.Game;
 import com.example.wordquest.domain.repository.GameRepository;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,5 +27,13 @@ public class GameServiceImpl
         super(repository, factory);
         this.gameRepository = repository;
         this.gameDTOFactory = factory;
+    }
+
+    @Override
+    public List<GameReadDTO> findAllByLobbyId(UUID lobbyId) {
+        List<Game> games = gameRepository.findAllByLobbyId(lobbyId);
+        return games.stream()
+                .map(gameDTOFactory::createReadDto)
+                .toList();
     }
 }

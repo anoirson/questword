@@ -5,6 +5,10 @@ import com.example.wordquest.application.factory.impl.RoundDTOFactoryImpl;
 import com.example.wordquest.application.service.RoundService;
 import com.example.wordquest.domain.model.Round;
 import com.example.wordquest.domain.repository.RoundRepository;
+
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +25,14 @@ public class RoundServiceImpl
         super(roundRepository, roundDTOFactory);
         this.roundRepository = roundRepository;
         this.roundDTOFactory = roundDTOFactory;
+    }
+
+    @Override
+    public List<RoundReadDTO> findAllByGameId(UUID gameId) {
+        List<Round> rounds = roundRepository.findAllByGameId(gameId);
+        return rounds.stream()
+                .map(roundDTOFactory::createReadDto)
+                .toList();
     }
 
 }

@@ -15,7 +15,7 @@ public class Game extends BaseEntity {
     @Column(nullable = false)
     private GameStatus status;
 
-    protected Game() {
+    public Game() {
         // JPA Only
     }
 

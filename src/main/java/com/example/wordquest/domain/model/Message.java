@@ -21,7 +21,7 @@ public class Message extends BaseEntity {
     @Column(nullable = false)
     private boolean isCorrect = false;
 
-    protected Message() {
+    public Message() {
         // JPA only
     }
 

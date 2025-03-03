@@ -14,7 +14,7 @@ public class Lobby extends BaseEntity {
     @JoinColumn(name = "host_player_id", nullable = false)
     private Player host;
 
-    protected Lobby() {
+    public Lobby() {
         // JPA Only
     }
 
@@ -51,10 +51,12 @@ public class Lobby extends BaseEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Lobby other)) return false;
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Lobby other))
+            return false;
         return Objects.equals(this.getId(), other.getId())
-               && Objects.equals(this.name, other.name)
-               && Objects.equals(this.host, other.host);
+                && Objects.equals(this.name, other.name)
+                && Objects.equals(this.host, other.host);
     }
 }

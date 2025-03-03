@@ -21,7 +21,7 @@ public class Round extends BaseEntity {
     @Column(nullable = false)
     private String word;
 
-    protected Round() {
+    public Round() {
         // JPA only
     }
 
